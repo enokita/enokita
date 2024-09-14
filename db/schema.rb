@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2024_09_14_121828) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.date "date"
+    t.string "date"
     t.string "condition"
     t.string "weather"
     t.integer "sauna_temperature"
