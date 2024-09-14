@@ -1,0 +1,24 @@
+<%= link_to '日記をかく', new_diary_entry_path %>
+
+<h1>自分の日記</h1>
+  <div class="diary-container">
+    <% @diary_entries.each do |t| %>
+      <div class="diary">
+        <p>日付: <%= t.hiduke.strftime("%Y-%m-%d") if t.hiduke.present? %>
+        <br>
+        体調:<%= t.condition %>
+        <br>
+        天気:<%= t.weather %>
+        <br>
+        温度:<%= t.sauna_temperature %>
+        <br>
+        水風呂の温度：<%= t.cold_bath_temperature %>
+        <br>
+        整い度：<%= t.state_of_relaxation %>
+        <br></p>
+      </div>
+    <% end %>
+  </div>
+<br>
+
+<%= link_to "トップページへ戻る", saunas_path %>

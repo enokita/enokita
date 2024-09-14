@@ -1,0 +1,44 @@
+<%= form_with(model: @diary_entry, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :hiduke, 'スタートタイム' %>
+    <%= form.date_select :hiduke, prompt: { day: '入力', month: '入力', year: '入力' }, default: Date.today %>
+  </div>
+
+  <div class="field">
+    <%= form.label :condition, '体調' %>
+    <%= form.text_field :condition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weather, '天気' %>
+    <%= form.text_field :weather %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sauna_temperature, 'サウナの温度' %>
+    <%= form.number_field :sauna_temperature %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cold_bath_temperature, '水風呂の温度' %>
+    <%= form.number_field :cold_bath_temperature %>
+  </div>
+
+  <div class="field">
+  <%= form.label :state_of_relaxation, '整い度を10段階で' %>
+  <div class="radio-buttons">
+    <% (1..10).each do |i| %>
+      <%= form.radio_button :state_of_relaxation, i %>
+      <%= form.label :state_of_relaxation, i %>
+    <% end %>
+  </div>
+</div>
+
+  <div class="actions">
+    <%= form.submit 'ちんちん' %>
+  </div>
+  <div class="main">
+  <%= link_to "トップページへ戻る", saunas_path %>
+  </div>
+  
+<% end %>

@@ -1,0 +1,141 @@
+// Place all the styles related to the saunas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.lecture_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 300px;
+  margin: 30px;
+}
+.name_field{
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+/*　以下新規投稿ページの星用のCSS　*/
+
+.post_form{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.post_form input[type='radio']{
+  display: none;
+}
+.post_form label{
+  position: relative;
+  padding: 10px 10px 0;
+  color: gray;
+  cursor: pointer;
+  font-size: 30px; /*星の大きさを変更するときはここ*/
+}
+.post_form label .text{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px; /*星の上の説明書きの大きさを変更するときはここ*/
+  color: gray;
+}
+.post_form label:hover,
+.post_form label:hover ~ label,
+.post_form input[type='radio']:checked ~ label{
+  color: #ffcc00;
+}
+
+
+/*　以下一覧ページの星用のCSS　*/
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+
+.star-rating-front {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+
+.star-rating-back {
+  display: inline-block;
+  color: #ccc;
+}
+
+.header-list {
+  display: flex;
+  justify-content: right;
+  padding: 0px;
+}
+
+.header-list ul {
+  padding: 0px;
+}
+
+.actions{
+  margin-top: 50px;
+}
+
+.field{
+  margin-top: 50px;
+}
+
+.button_to{
+  text-align: right;  
+}
+
+.img-wrapper {
+  width: 1480px;
+  height: 800px;
+  background-image: url(sauna.jpg);
+  background-size: cover;
+}
+
+.saunas-container{
+  background-color: #efc7ae;
+}
+
+.B{
+  background-color: #efc7ae;
+}
+
+.header-content{
+  background-color: gray;
+}
+
+.name{
+  width: 700px;
+}
+
+.cost{
+  width: 700px;
+}
+
+.place{
+  width: 700px;
+}
+
+.like-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080; 
+  margin-left: 20px;
+  }
+ 
+ .unlike-btn {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 20px;
+  }

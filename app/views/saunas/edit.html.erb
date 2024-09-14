@@ -1,0 +1,15 @@
+<%= form_for @sauna do |f| %>
+  <div class="name">
+    <%= f.label :名前 %>
+    <%= f.text_field :name, :size => 140 %> 
+  </div>
+  <div class="cost">
+    <%= f.label :費用 %>
+    <%= f.text_field :cost, :size => 140 %>
+  </div>
+  <div class="place">
+    <%= f.label :場所 %>
+    <%= f.text_field :place, :size => 140 %>
+  </div>
+    <%= f.submit "編集する" %>
+  <% end %>

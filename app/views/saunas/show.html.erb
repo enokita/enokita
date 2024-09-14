@@ -1,0 +1,29 @@
+<h1>サウナ</h1>
+<h3>投稿詳細</h3>
+<div class="sauna">
+  <p><%= @sauna.name %></p>
+  <p><%= @sauna.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@sauna) %>
+        <%= link_to sauna_like_path(@sauna), method: :delete do %>
+          <p>いいねを取り消す</p><%= @sauna.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to sauna_likes_path(@sauna), method: :post do %>
+          <p>いいね</p><%= @sauna.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= @sauna.likes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_sauna_path(@sauna.id) %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @sauna.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<%= link_to "投稿一覧に戻る", saunas_path %>
+<%= link_to "編集する", edit_sauna_path(@sauna.id) %>
+

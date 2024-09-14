@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル</strong>
+  <%= @diary_entry.title %>
+</p>
+
+<p>
+  <strong>日付</strong>
+  <% if @diary_entry.date.present? %>
+    <%= Date.strptime(@diary_entry.date, "%Y-%m-%d").strftime("%Y-%m-%d %H:%M") %>
+  <% else %>
+    日付が指定されていません
+  <% end %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @diary_entry.content %>
+</p>
+
+<%= link_to '編集する', edit_diary_entry_path(@diary_entry) %> |
+<%= link_to '戻る', diary_entries_path %>
+<%= link_to "トップページへ戻る", saunas_path %>
+
+
+<h3>Tweet詳細</h3>
+<div class="diary_entry">
+  <p><%= @diary_entry.title %></p>
+  <p><%= @diary_entry.created_at %></p>
+  <%= link_to "編集する", edit_diary_entry_path(@diary_entry.id) %>
+</div>
+
+
+
+<%= link_to "Tweet一覧に戻る", diary_entry_path %>
