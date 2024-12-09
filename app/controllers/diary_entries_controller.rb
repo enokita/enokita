@@ -12,7 +12,7 @@ class DiaryEntriesController < ApplicationController
 
   def create
     @diary_entry = current_user.diary_entries.new(diary_entry_parameter)
-    if @diary_entry.save!
+    if @diary_entry.save
       redirect_to diary_entries_path, notice: '日記が保存されました。'
     else
       @diary_entries = DiaryEntry.all
@@ -43,6 +43,6 @@ class DiaryEntriesController < ApplicationController
   end
 
   def diary_entry_parameter
-    params.require(:diary_entry).permit(:date, :condition, :weather, :sauna_temperature, :cold_bath_temperature, :state_of_relaxation)
+    params.require(:diary_entry).permit(:hiduke, :condition, :weather, :sauna_temperature, :cold_bath_temperature, :state_of_relaxation)
   end
 end

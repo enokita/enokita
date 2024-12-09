@@ -1,57 +1,55 @@
 <div class="B">
-<h1>投稿一覧</h1>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<h4><%= link_to 'サウナ日記をつける', diary_entries_path %></h4>
-<h3>投稿を検索</h3>
- <%= form_tag({controller:"saunas",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
+  <h4><%= link_to "新規投稿へ", new_sauna_path %></h4>
+  <h3>投稿を検索</h3>
+  <%= form_tag({controller:"saunas",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索する'  %>
   <% end %>
-  <div>
-  <% @saunas.each do |t| %>
-<div>
-<h2>総合評価：
-<span class="star-rating">
-   <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
-   <span class="star-rating-back">★★★★★</span>
-</span> 
-</h2>
-</div>
-</div>
-<div class="saunas-container">
-  <% if user_signed_in? %>
-    
+  <h1>投稿一覧</h1>
+  <div class="post">
+    <% @saunas.each do |t| %>
+      <div class="saunas-container">
+        <div class="sauna">
+          <div class="rating-container">
+            <h2>総合評価：
+              <span class="star-rating">
+                <span class="star-rating-front" style="width: <%= getPercent(t.overall) %>%;">★★★★★</span>
+                <span class="star-rating-back">★★★★★</span>
+              </span>
+            </h2>
+          </div>
+          <div class="sauna-details">
+            <%= t.name %>
+            <%= t.cost %>
+            <%= t.place %>
+            <br>
+            <% if user_signed_in? %>
+              <% if current_user.already_liked?(t) %>
+                <%= link_to sauna_like_path(id: t.id, sauna_id: t.id), method: :delete do %>
+                  <i class="fa-regular fa-face-kiss-wink-heart" style="color: red;"></i>いいねを取り消す<%= t.likes.count %>
+                <% end %>
+              <% else %>
+                <%= link_to sauna_likes_path(id: t.id, sauna_id: t.id), method: :post do %>
+                  <i class="fa-regular fa-face-kiss-wink-heart" style="color: gray;"></i>いいね<%= t.likes.count %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <p>いいねの数 = </p><%= t.likes.count %>
+            <% end %>
+            <%= t.created_at %>
+            <%= link_to "詳細へ", sauna_path(t.id) %>
+            <%= link_to "編集する", edit_sauna_path(t.id) %>
+            <%= button_to "削除する", sauna_path(t.id), method: :delete %>
+          </div>
+        </div>
+      </div> 
     <% end %>
-  
-    <div class="sauna">
-      <%= t.user.email %>
-      <%= t.name %>
-      <%= t.cost %>
-      <%= t.place %>
-      <% if user_signed_in? %>
-      <% if current_user.already_liked?(t) %>
-          <%= link_to sauna_like_path(id: t.id, sauna_id: t.id), method: :delete do %>
-            <p>いいねを取り消す</p><%= t.likes.count %>
-          <% end %>
-      <% else %>
-          <%= link_to sauna_likes_path(id: t.id, sauna_id: t.id), method: :sauna do %>
-             <p>いいね</p><%= t.likes.count %>
-          <% end %>
-      <% end %>
-  <% else %>
-      <p>いいねの数 = </p><%= t.likes.count %>
-  <% end %>
-
-      <%= t.created_at %>
-      <%= link_to "詳細へ", sauna_path(t.id) %>
-      <%= link_to "編集する", edit_sauna_path(t.id) %>
-      <%= button_to "削除する", sauna_path(t.id), method: :delete %>
-
-
-    </div>
-  <% end %>
+  </div>
 </div>
+
 
 
 <div id='map'></div>

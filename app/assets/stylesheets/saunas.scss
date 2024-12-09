@@ -63,22 +63,23 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  color: #ffcc33;
+  color: gold; /* 星の前景色を金色に設定 */
 }
 
 .star-rating-back {
   display: inline-block;
-  color: #ccc;
+  color: #ddd; /* 星の背景色を薄いグレーに設定 */
 }
 
 .header-list {
   display: flex;
   justify-content: right;
   padding: 0px;
+  padding-right: 10px;
 }
 
 .header-list ul {
-  padding: 0px;
+  padding-right: 20px;
 }
 
 .actions{
@@ -94,34 +95,53 @@
 }
 
 .img-wrapper {
-  width: 1480px;
+  width: 1475px;
   height: 800px;
   background-image: url(sauna.jpg);
   background-size: cover;
+  display: flex;               /* フレックスボックスを使って中央揃え */
+  justify-content: center;      /* 水平方向の中央揃え */
+  align-items: center;          /* 垂直方向の中央揃え */
+  height: 100vh;                /* 画像の高さを画面全体に設定 */
+  text-align: center;           /* テキストを中央揃え */
+  font-family: 'Zen Kurenaido', serif;
+}
+
+.larger-text {
+  font-size: 2em;  /* フォントサイズを2倍にする */
+}
+
+.h1{
+  text-align:center;
 }
 
 .saunas-container{
   background-color: #efc7ae;
+  margin: 0px 30px;
+  margin-bottom: 30px;
 }
 
 .B{
-  background-color: #efc7ae;
+  background-color: #efdace;
 }
 
 .header-content{
-  background-color: gray;
+  background-color: rgb(234, 158, 66);
+  position: fixed;
+  width: 100%; /* ヘッダーが画面幅全体に広がるように */
+  z-index: 1000; /* 他の要素より前面に表示するためにz-indexを指定 */
 }
 
 .name{
-  width: 700px;
+  width: 300px;
 }
 
 .cost{
-  width: 700px;
+  width: 300px;
 }
 
 .place{
-  width: 700px;
+  width: 300px;
 }
 
 .like-btn {
@@ -130,12 +150,39 @@
   font-size: 25px;
   color: #808080; 
   margin-left: 20px;
-  }
+}
  
- .unlike-btn {
-  width: 25px;
-  height: 30px;
-  font-size: 25px;
-  color: #e54747;
-  margin-left: 20px;
-  }
+.unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #e54747;
+ margin-left: 20px;
+}
+
+.saunas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em; /* アイテム間のスペースを追加 */
+  background-color: #efdace;
+}
+
+.sauna {
+  padding: 0.5em 1em;
+  margin: 0; 
+  color: #FFF;
+  background: #f5b669;
+  border-bottom: solid 6px #fa8d07;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  width: 300px; 
+  height: 250px;
+  box-sizing: border-box; 
+}
+
+.post{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 calc(33.333% - 1em); /* Adjust the width and gap as needed */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}

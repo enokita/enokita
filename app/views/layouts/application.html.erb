@@ -15,10 +15,10 @@
  <header>
     
     <header class="header-content">
-      <h1 class="header-title">サウナ</h1>
+      
       <ul class="header-list">
         <% if user_signed_in? %>
-          <ul><%= link_to "新規投稿へ", new_sauna_path %></ul>
+          <ul><%= link_to 'サウナ日記をつける', diary_entries_path %></ul>
           <ul><%= link_to "プロフィール", user_path(current_user.id) %></ul>
           <ul><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></ul>
         <% else %>
@@ -28,7 +28,12 @@
       </ul>
     </header>
  </header>
- <div class="img-wrapper"></div>
+ <div class="img-wrapper">
+  <h1>
+    <span class="larger-text">サウナでととのう</span><br>
+    ~心と体をリセットする、私だけのサウナ日記~
+  </h1>
+ </div>
  <main>
   <%= yield %>
  </main>

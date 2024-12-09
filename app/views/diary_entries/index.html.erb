@@ -4,7 +4,7 @@
   <div class="diary-container">
     <% @diary_entries.each do |t| %>
       <div class="diary">
-        <p>日付: <%= t.hiduke.strftime("%Y-%m-%d") if t.hiduke.present? %>
+      <p>日付: <%= t.hiduke %>
         <br>
         体調:<%= t.condition %>
         <br>
